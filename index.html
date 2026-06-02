@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tải ngay bộ tài liệu miễn phí — từ hướng dẫn ra lệnh cơ bản, kịch bản ứng dụng thực tế và bảng theo dõi năng suất — dùng được ngay từ hôm nay.
+</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green-dark:   #085041;
+    --green-mid:    #0F6E56;
+    --green-main:   #1D9E75;
+    --green-light:  #E1F5EE;
+    --coral-main:   #D85A30;
+    --coral-dark:   #c04e25;
+    --sand-bg:      #F1EFE8;
+    --sand-border:  #E8E3DA;
+    --sand-card:    #FAF8F5;
+    --text-main:    #1a1a1a;
+    --text-muted:   #6b6b6b;
+    --text-faint:   #a0a0a0;
+    --white:        #ffffff;
+    --radius-card:  20px;
+    --radius-inner: 12px;
+  }
+
+  html { font-size: 16px; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--sand-bg);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 1rem;
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: var(--white);
+    border-radius: var(--radius-card);
+    width: 100%;
+    max-width: 520px;
+    padding: 2.5rem 2.5rem 2rem;
+    box-shadow: 0 4px 48px rgba(0,0,0,0.07);
+  }
+
+  /* ── BADGE ── */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--green-light);
+    color: var(--green-dark);
+    font-size: 12.5px;
+    font-weight: 500;
+    padding: 5px 13px;
+    border-radius: 99px;
+    margin-bottom: 1.25rem;
+  }
+  .badge-dot {
+    width: 6px; height: 6px;
+    background: var(--green-main);
+    border-radius: 50%;
+  }
+
+  /* ── HEADLINE ── */
+  .headline {
+    font-family: 'Lora', serif;
+    font-size: clamp(22px, 4vw, 30px);
+    font-weight: 400;
+    line-height: 1.3;
+    color: var(--text-main);
+    margin-bottom: 0.75rem;
+  }
+  .headline em { font-style: italic; color: var(--coral-main); }
+
+  /* ── SUBTEXT ── */
+  .subtext {
+    font-size: clamp(13.5px, 2vw, 15px);
+    line-height: 1.7;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  /* ── FILE BOX ── */
+  .file-box {
+    background: var(--sand-card);
+    border: 1px solid var(--sand-border);
+    border-radius: var(--radius-inner);
+    padding: 0.9rem 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 1.35rem;
+  }
+  .file-ico {
+    width: 40px; height: 40px;
+    background: var(--green-mid);
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .file-ico svg { width: 20px; height: 20px; fill: var(--white); }
+  .file-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 3px;
+  }
+  .file-meta { font-size: 12px; color: var(--text-faint); }
+
+  /* ── CHECKLIST ── */
+  .checklist {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    margin-bottom: 1.75rem;
+  }
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: clamp(13px, 2vw, 14.5px);
+    color: var(--text-main);
+    line-height: 1.55;
+  }
+  .tick {
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    background: var(--green-light);
+    flex-shrink: 0;
+    margin-top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .tick svg { width: 10px; height: 10px; stroke: var(--green-main); stroke-width: 2.5; fill: none; }
+
+  /* ── CTA BUTTON ── */
+  .cta-btn {
+    width: 100%;
+    background: var(--coral-main);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius-inner);
+    padding: 17px 0;
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(14px, 2vw, 16px);
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    margin-bottom: 0.65rem;
+    transition: background 0.15s, transform 0.1s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .cta-btn:hover { background: var(--coral-dark); }
+  .cta-btn:active { transform: scale(0.99); }
+  .cta-btn svg { width: 17px; height: 17px; stroke: var(--white); stroke-width: 2; fill: none; }
+
+  .hint {
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-faint);
+    margin-bottom: 1.1rem;
+  }
+
+  .divider { height: 1px; background: var(--sand-border); margin-bottom: 1.1rem; }
+
+  .footer-note {
+    text-align: center;
+    font-size: 12.5px;
+    color: var(--text-faint);
+    line-height: 1.5;
+  }
+  .footer-note strong { color: var(--text-muted); font-weight: 500; }
+
+  /* ══════════════════════════════
+     DESKTOP ENHANCEMENTS ≥ 768px
+  ══════════════════════════════ */
+  @media (min-width: 768px) {
+    body { padding: 3rem 2rem; }
+
+    .card {
+      max-width: 600px;
+      padding: 3rem 3rem 2.5rem;
+    }
+
+    .badge { font-size: 13px; padding: 6px 14px; margin-bottom: 1.5rem; }
+
+    .file-box { padding: 1rem 1.25rem; gap: 16px; }
+    .file-ico { width: 44px; height: 44px; }
+    .file-ico svg { width: 22px; height: 22px; }
+    .file-name { font-size: 15px; }
+    .file-meta { font-size: 13px; }
+
+    .checklist { gap: 13px; margin-bottom: 2rem; }
+    .tick { width: 22px; height: 22px; }
+    .tick svg { width: 11px; height: 11px; }
+
+    .cta-btn { padding: 18px 0; border-radius: 14px; }
+
+    .hint { font-size: 12.5px; }
+    .footer-note { font-size: 13px; }
+  }
+
+  /* ══════════════════════════
+     MOBILE TWEAKS ≤ 480px
+  ══════════════════════════ */
+  @media (max-width: 480px) {
+    body { padding: 1rem 0.75rem 2rem; align-items: flex-start; }
+    .card { padding: 1.5rem 1.25rem; border-radius: 16px; }
+    .badge { font-size: 12px; }
+    .cta-btn { padding: 16px 0; }
+  }
+
+  /* ══════════════════════════
+     OVERLAY / BOTTOM SHEET
+  ══════════════════════════ */
+  .overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.48);
+    z-index: 300;
+    align-items: flex-end;
+    justify-content: center;
+  }
+  .overlay.show { display: flex; }
+
+  /* On desktop: center as popup */
+  @media (min-width: 600px) {
+    .overlay { align-items: center; }
+    .sheet {
+      border-radius: 20px !important;
+      max-width: 420px;
+      margin: 0 auto;
+      padding-bottom: 2rem !important;
+    }
+  }
+
+  .sheet {
+    background: var(--white);
+    border-radius: 20px 20px 0 0;
+    width: 100%;
+    max-width: 520px;
+    padding: 1.25rem 1.75rem 2.5rem;
+    animation: slideUp 0.28s cubic-bezier(.32,.72,0,1);
+  }
+
+  @keyframes slideUp {
+    from { transform: translateY(60px); opacity: 0; }
+    to   { transform: translateY(0);    opacity: 1; }
+  }
+
+  .sheet-handle {
+    width: 36px; height: 4px;
+    background: #e0ddd6;
+    border-radius: 99px;
+    margin: 0 auto 1.5rem;
+  }
+
+  @media (min-width: 600px) { .sheet-handle { display: none; } }
+
+  .sheet-icon {
+    width: 52px; height: 52px;
+    background: var(--green-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+  }
+  .sheet-icon svg { width: 26px; height: 26px; stroke: var(--green-main); stroke-width: 2; fill: none; }
+
+  .sheet h2 {
+    font-family: 'Lora', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--text-main);
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  .sheet p {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.65;
+    margin-bottom: 1.5rem;
+  }
+
+  .ring-wrap {
+    width: 76px; height: 76px;
+    position: relative;
+    margin: 0 auto 1.5rem;
+  }
+  .ring-wrap svg { transform: rotate(-90deg); }
+  .ring-bg  { fill: none; stroke: var(--sand-bg); stroke-width: 5; }
+  .ring-fg  {
+    fill: none; stroke: var(--coral-main);
+    stroke-width: 5; stroke-linecap: round;
+    stroke-dasharray: 201;
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 1s linear;
+  }
+  .ring-num {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px; font-weight: 500; color: var(--coral-main);
+  }
+
+  .dl-btn {
+    width: 100%;
+    background: var(--green-main);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius-inner);
+    padding: 16px 0;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+    margin-bottom: 0.85rem;
+    transition: background 0.15s, opacity 0.2s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .dl-btn[disabled] { opacity: 0.35; pointer-events: none; }
+  .dl-btn:not([disabled]):hover { background: var(--green-mid); }
+  .dl-btn svg { width: 16px; height: 16px; stroke: var(--white); stroke-width: 2; fill: none; }
+
+  .skip-btn {
+    width: 100%;
+    background: none;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--text-faint);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+    padding: 8px 0;
+  }
+  .skip-btn:hover { color: var(--text-muted); }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="badge">
+    <span class="badge-dot"></span>
+    Miễn phí · Không cần đăng ký
+  </div>
+
+  <h1 class="headline">Bộ tài liệu <em>học tiếng Anh</em> dành cho người mới bắt đầu</h1>
+
+  <p class="subtext">Tải ngay bộ tài liệu miễn phí — từ hướng dẫn ra lệnh cơ bản, kịch bản ứng dụng thực tế và bảng theo dõi năng suất — dùng được ngay từ hôm nay.
+</p>
+
+  <div class="file-box">
+    <div class="file-ico">
+      <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+    </div>
+    <div>
+      <div class="file-name">100trolyChatgpt_NguoiMoi.pdf</div>
+      <div class="file-meta">4 phần · Promt · Ứng dụng · Năng suất · Theo dõi </div>
+    </div>
+  </div>
+
+  <ul class="checklist">
+    <li>
+      <span class="tick"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+      100+ mẫu câu lệnh (prompt) thực dụng kèm ví dụ và mẹo viết prompt hiệu quả
+    </li>
+    <li>
+      <span class="tick"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+      Kịch bản ứng dụng AI vào công việc hằng ngày — tiết kiệm thời gian mà không bị choáng ngợp
+    </li>
+    <li>
+      <span class="tick"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+      Danh sách các công cụ AI miễn phí tốt nhất — tổng hợp những lựa chọn phổ biến nhất hiện nay
+    </li>
+    <li>
+      <span class="tick"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+      Bảng theo dõi tiến độ học AI hằng tuần — biết rõ mình đang ở đâu trên hành trình
+    </li>
+  </ul>
+
+  <button class="cta-btn" onclick="startFlow()">
+    <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    Tải tài liệu miễn phí ngay
+  </button>
+
+  <p class="hint">🔗 Bạn sẽ được chuyển qua trang đối tác trước khi tải</p>
+
+  <div class="divider"></div>
+
+  <p class="footer-note">Chia sẻ bởi <strong>AI Ứng Dụng Mỗi Ngày </strong> · Hoàn toàn miễn phí, không spam</p>
+</div>
+
+<!-- Overlay -->
+<div class="overlay" id="overlay">
+  <div class="sheet" id="sheet">
+    <div class="sheet-handle"></div>
+
+    <div class="sheet-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    </div>
+
+    <h2>Đang chuẩn bị tải xuống…</h2>
+    <p>Bạn vừa được chuyển sang trang đối tác.<br>Tài liệu sẽ sẵn sàng sau <strong id="sec-label">5</strong> giây.</p>
+
+    <div class="ring-wrap">
+      <svg width="76" height="76" viewBox="0 0 76 76">
+        <circle class="ring-bg" cx="38" cy="38" r="32"/>
+        <circle class="ring-fg" id="ring" cx="38" cy="38" r="32"/>
+      </svg>
+      <div class="ring-num" id="ring-num">5</div>
+    </div>
+
+    <a id="dl-btn" href="YOUR_DOWNLOAD_LINK_HERE" target="_blank" class="dl-btn" disabled>
+      <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Tải tài liệu ngay
+    </a>
+
+    <button class="skip-btn" onclick="skipNow()">Bỏ qua đếm ngược và tải ngay →</button>
+  </div>
+</div>
+
+<script>
+  /* ===== CẤU HÌNH LINK — chỉ sửa 2 dòng này ===== */
+  const AFFILIATE = "https://s.shopee.vn/6feb1xSHmz";  /* 👈 link affiliate */
+  const DOWNLOAD  = "https://docs.google.com/spreadsheets/d/1JEVUpzbq2dj6bfG5TF5XhxyuoFyxqkzw0S4a-GmyN54/edit?usp=sharing";   /* 👈 link tải tài liệu */
+  /* ================================================ */
+
+  const TOTAL = 5;
+  const CIRC  = 2 * Math.PI * 32; // r=32 → ~201
+
+  let timer = null;
+
+  function startFlow() {
+    window.open(AFFILIATE, "_blank");
+    document.getElementById("overlay").classList.add("show");
+
+    const ring   = document.getElementById("ring");
+    const numEl  = document.getElementById("ring-num");
+    const secLbl = document.getElementById("sec-label");
+    const btn    = document.getElementById("dl-btn");
+
+    btn.href = DOWNLOAD;
+    btn.setAttribute("disabled", "");
+    ring.style.strokeDashoffset = 0;
+
+    let left = TOTAL;
+
+    timer = setInterval(() => {
+      left--;
+      numEl.textContent  = left;
+      secLbl.textContent = left;
+      ring.style.strokeDashoffset = CIRC * ((TOTAL - left) / TOTAL);
+
+      if (left <= 0) {
+        clearInterval(timer);
+        enableDownload();
+      }
+    }, 1000);
+  }
+
+  function enableDownload() {
+    const btn = document.getElementById("dl-btn");
+    btn.removeAttribute("disabled");
+    btn.click();
+  }
+
+  function skipNow() {
+    clearInterval(timer);
+    enableDownload();
+  }
+
+  document.getElementById("overlay").addEventListener("click", function(e) {
+    if (e.target === this) {
+      clearInterval(timer);
+      this.classList.remove("show");
+    }
+  });
+</script>
+</body>
+</html>
